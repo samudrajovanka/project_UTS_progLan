@@ -1,134 +1,56 @@
-# # def divide(n, side):
-# #     if n != 0:
-# #         n = n//2
-# #         if side == 'L':
-# #             print(side)
-# #             side = 'R'
-# #             divide(n, side)
-# #         else:
-# #             print(side)
-# #             side = 'L'
-# #             divide(n, side)
-# #     else:
-# #         print(side)
+'''
+Project Program Lanjut
 
-# # divide(10, 'L')
+Jovanka Samudra
+Marshall Anugrah Najmi
+Daffy Ramzi
+'''
 
-# # def divide(arr, temp_Arr, side = 'L', ind = 0):
-# #     if len(arr) != 0:
-# #         temp_Arr.append([])
-# #         mid_Ind = (len(arr)-1)//2
-# #         temp_Arr[-1] = arr[mid_Ind]
-# #         if side == 'L':
-# #             print(side)
-# #             divide(arr[:mid_Ind], temp_Arr, side = 'R', ind = mid_Ind)
-# #         else:
-# #             print(side)
-# #             divide(arr[ind+1:], temp_Arr, side = 'L')
-# #     else:
-# #         print(temp_Arr)
+# popLeft = mengeluarkan array indeks ke 0 dan menghapus elemen terakhir
+def popLeft(arr):
+    val=arr[0]
 
-# # arr = [1,2,3,4,5,6,7,8,9,10]
-# # temp_Arr = []
-# # divide(arr, temp_Arr)
+    # memajukan data array ke depan
+    for i in range (0, len(arr)-1):
+        arr[i]=arr[i+1]
+         
+    # menghapus elemen array terakhir
+    arr[-1:] = []
+    print('====isi setelah diapus =',arr)
+    return val
 
-# def divide(arr, temp_arr, temp_left = [], temp_right = [], side = 'R'):
-#     if len(arr) != 0:
-#         ind_mid = (len(arr)-1)//2
-#         print(ind_mid, side)
-        
-#         if side =='R':
-#             temp_right.append([])
-#             temp_right[-1] = arr[ind_mid]
-#             print('val = ', temp_right)
-#         else:
-#             temp_left.append([])
-#             temp_left[-1] = arr[ind_mid]
-#             print('val = ',temp_left)
+def getMid(*arrs, lengthArr, data = [], queue = []):
+    if len(data) == lengthArr:
+        print(data)
+        return data
+    else:
+        # memasukan per array ke dalam list queue (list untuk antrian pengambilan data) 
+        for arr in arrs:
+            queue.append(arr)
 
-#         divide(arr[:ind_mid], temp_arr, temp_left, temp_right, side = 'L')
-#         divide(arr[ind_mid+1:], temp_arr, temp_left, temp_right, side = 'R')
-#     else:
-#         temp_arr.append([])
-#         print('panjang temparr = ', len(temp_arr))
-        
-#         print('val right = ', temp_right)
-#         print('val left = ',temp_left)
-#         i = 0
-#         j = 0
-#         for i in range(len(temp_arr)):
-#             print(i)
-#             if i % 2 == 0:
-#                 temp_arr[i] = temp_right[i]
-#                 i += 1
-#             else:
-#                 temp_arr[i] = temp_left[j]
-#                 j += 1
-#             print('val temp = ',temp_arr)
+        # mengambil data dari fungsi popLeft
+        val_pop = popLeft(queue)
 
-#         # print(temp_arr)
-
-# arr = [1,2,3,4,5,6,7,8,9,10]
-# temp_arr = []
-# divide(arr, temp_arr)
-
-from collections import deque
-
-# def mid(*args, temp_arr, temp = [], data = deque()):
-#     if len(temp_arr) != 10:
-#         print('isi data sebelum = ', data)
-#         for i in args:
-#             data.append(i)
-#             print(data)
-
-#         val_pop = data.popleft()
-#         print('isi data setelah pop = ', data)
-#         print('isi val_pop = ',val_pop)
-#         ind_mid = (len(val_pop))//2
-#         print('isi ind_mid = ',ind_mid)
-#         temp_arr.append(val_pop[ind_mid])
-#         print('isi temp_arr = ',temp_arr)
-#         # print(val_pop[ind_mid])
-#         print('sisi kiri = ', val_pop[:ind_mid])
-#         print('sisi kanan = ', val_pop[ind_mid+1:], '\n\n')
-#         if ind_mid != 1 and ind_mid != 0:
-#             print('masuk if')
-#             mid(val_pop[:ind_mid], val_pop[ind_mid+1:], temp_arr = temp_arr, data = data)
-#         elif ind_mid == 0:
-#             print('masuk 0')
-#             mid(temp_arr = temp_arr, data = data)
-#         else:
-#             mid(val_pop[:ind_mid], temp_arr = temp_arr, data = data)
-#         # mid(val_pop[ind_mid+1:], temp_arr = temp_arr)
-#     else:
-#         print(temp_arr)
-
-# a = [1,2,3,4,5,6,7,8,9,10]
-# b = []
-# mid(a, temp_arr = b)
-
-def getMid(*args, temp = [], data = deque()):
-    if len(temp) != 10:
-        for i in args:
-            data.append(i)
-
-        val_pop = data.popleft()
+        # mengambil indeks tengah-tengah dari array yang di pop
         ind_mid = (len(val_pop))//2
-        temp.append(val_pop[ind_mid])
+
+        # memasukan nilai tengah dari array yang di pop ke list data
+        data.append(val_pop[ind_mid])
 
         if ind_mid == 0:
-            getMid(data = data)
+            # merekursif jika tidak ada data di kiri dan kanan
+            getMid(lengthArr = lengthArr, queue = queue)
         elif ind_mid == 1:
-            getMid(val_pop[:ind_mid], data = data)
+            if len(val_pop) == 3:
+                getMid(val_pop[:ind_mid], val_pop[ind_mid+1:], lengthArr = lengthArr, queue = queue)
+            else:
+            # merekursif jika hanya ada data di kiri
+                getMid(val_pop[:ind_mid], lengthArr = lengthArr, queue = queue)
         else:
-            getMid(val_pop[:ind_mid], val_pop[ind_mid+1:], data = data)
-    else:
-        print(temp)
+            # merekursif jika ada data di kiri dan kanan
+            getMid(val_pop[:ind_mid], val_pop[ind_mid+1:], lengthArr = lengthArr, queue = queue)
 
-a = [1,2,3,4,5,6,7,8,9,10]
-
-# b = getMid(a)
-getMid(a)
-# print(b)
-
-
+a = [1,2,3,4,5,6,7,8]
+length = len(a)
+b = getMid(a, lengthArr=length)
+print(b)
