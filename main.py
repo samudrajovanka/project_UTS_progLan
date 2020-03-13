@@ -16,7 +16,6 @@ def popLeft(arr):
          
     # menghapus elemen array terakhir
     arr[-1:] = []
-    print('====isi setelah diapus =',arr)
     return val
 
 def getMid(*arrs, lengthArr, data = [], queue = []):
