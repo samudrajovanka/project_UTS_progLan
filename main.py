@@ -5,6 +5,9 @@ Marshall Anugrah Najmi
 Daffy Ramzi
 '''
 
+# mengambil library os
+import os
+
 # popLeft = mengeluarkan array indeks ke 0 dan menghapus elemen terakhir
 def popLeft(arr):
     val=arr[0]
@@ -19,7 +22,7 @@ def popLeft(arr):
 
 def getMid(*arrs, lengthArr, data = [], queue = []):
     if len(data) == lengthArr:
-        print(data)
+        # print(data)
         return data
     else:
         # memasukan per array ke dalam list queue (list untuk antrian pengambilan data) 
@@ -48,16 +51,24 @@ def getMid(*arrs, lengthArr, data = [], queue = []):
             # merekursif jika ada data di kiri dan kanan
             getMid(val_pop[:ind_mid], val_pop[ind_mid+1:], lengthArr = lengthArr, queue = queue)
 
-a = []
-isContinue=True
-while isContinue :
-    limit=int(input("Masukan jumlah angka yg ingin dimasukan ke list A: "))
-    if limit<21:
-        print("Limit yang anda masukan kurang dari 21")
-    else: 
-        isContinue = False
-        for i in range (0,limit):
-            a.append(int(input(f"Angka elemen ke-{i+1}: ")))
-        length=len(a)
-        b = getMid(a, lengthArr=length)
-        print(b)
+if __name__ == "__main__":
+    # membuat fungsi untuk clear screen (anonymous function)
+    cls_scr = lambda: os.system("cls")
+
+    f_arr = []
+    is_continue = True
+
+    while is_continue :
+        limit = int(input("Masukan limit angka yang ingin dimasukan = "))
+        if limit < 21:
+            print("Limit yang anda masukan kurang dari 21\n")
+        else: 
+            is_continue = False
+            for i in range (0,limit):
+                f_arr.append(int(input(f"Angka elemen ke-{i+1}: ")))
+
+            cls_scr()
+            print("Data asli =", f_arr)
+            length = len(f_arr)
+            results = getMid(f_arr, lengthArr=length)
+            print("Data hasil = ", results)
