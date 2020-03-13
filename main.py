@@ -1,6 +1,5 @@
 '''
 Project Program Lanjut
-
 Jovanka Samudra
 Marshall Anugrah Najmi
 Daffy Ramzi
@@ -49,7 +48,16 @@ def getMid(*arrs, lengthArr, data = [], queue = []):
             # merekursif jika ada data di kiri dan kanan
             getMid(val_pop[:ind_mid], val_pop[ind_mid+1:], lengthArr = lengthArr, queue = queue)
 
-a = [1,2,3,4,5,6,7,8]
-length = len(a)
-b = getMid(a, lengthArr=length)
-print(b)
+a = []
+isContinue=True
+while isContinue :
+    limit=int(input("Masukan jumlah angka yg ingin dimasukan ke list A: "))
+    if limit<21:
+        print("Limit yang anda masukan kurang dari 21")
+    else: 
+        isContinue = False
+        for i in range (0,limit):
+            a.append(int(input(f"Angka elemen ke-{i+1}: ")))
+        length=len(a)
+        b = getMid(a, lengthArr=length)
+        print(b)
