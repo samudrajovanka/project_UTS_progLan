@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
     while is_continue :
         limit = int(input("Masukan limit array = "))
-        if limit < 5:
+        if limit < 21:
             print("Limit yang anda masukan kurang dari 21\n")
         else: 
             is_continue = False
