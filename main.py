@@ -13,7 +13,7 @@ def popLeft(arr):
     val=arr[0]
 
     # memajukan data array ke depan
-    for i in range (0, len(arr)-1):
+    for i in range (len(arr)-1):
         arr[i]=arr[i+1]
          
     # menghapus elemen array terakhir
@@ -63,7 +63,7 @@ if __name__ == "__main__":
             print("Limit yang anda masukan kurang dari 21\n")
         else: 
             is_continue = False
-            for i in range (limit):
+            for i in range(limit):
                 f_arr.append(int(input(f"Angka elemen ke-{i+1}: ")))
 
             cls_scr()
