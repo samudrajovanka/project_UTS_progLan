@@ -1,1 +1,1 @@
-Kode diatas tidak untuk disalin oleh kelompok lain. Kode diatas hanya untuk referensi algoritma saja. Terima Kasih.
+KODE DIATAS TIDAK UNTUK DISALIN OLEH KELOMPOK LAIN. KODE DIATAS HANYA UNTUK REFERENSI ALGORITMA SAJA. TERIMA KASIH.
