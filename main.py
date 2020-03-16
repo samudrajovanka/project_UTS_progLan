@@ -3,7 +3,7 @@ Project Program Lanjut
 
 Jovanka Samudra
 Marshall Anugrah Najmi
-Daffy Ramzi
+Daffy Ramzy
 '''
 
 # mengambil library os
@@ -68,6 +68,5 @@ if __name__ == "__main__":
 
             cls_scr()
             print("Data asli =", f_arr)
-            length = len(f_arr) 
-            results = getMid(f_arr, length)
+            results = getMid(f_arr, limit)
             print("Data hasil =", results)
