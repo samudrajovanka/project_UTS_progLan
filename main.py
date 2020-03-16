@@ -3,7 +3,7 @@ Project Program Lanjut
 
 Jovanka Samudra
 Marshall Anugrah Najmi
-Daffy Ramzy
+Daffy Fayyadhya Ramzy
 '''
 
 # mengambil library os
